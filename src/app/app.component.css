@@ -1,0 +1,27 @@
+.maincontent{
+    padding: 2rem 5% !important;
+    background-color: rgb(255, 255, 255);
+}
+
+.background{
+    padding: 0 10%;
+    background-color: rgb(219, 219, 219);
+}
+
+@media (max-width: 720px) {
+    .maincontent{
+        padding: 1rem 6% !important;
+    }
+    .background{
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 540px) {
+    .maincontent{
+        padding: 1rem 6% !important;
+    }
+    .background{
+        padding: 0;
+    }
+}

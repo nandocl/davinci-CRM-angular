@@ -1,0 +1,73 @@
+<div class="content">
+  <h4 class="mb-4">Cargar clientes desde archivo</h4>
+  <p>Desde esta ventana podrá cargar clientes desde un archivo .txt. Se requiere que especifique la posición que ocupa los siguientes campos en el archivo .txt.</p>
+  <div>
+    <form [formGroup]="formGroup">
+      <div class="form-group row">
+          <div class="col-md-3 py-2">
+              <input formControlName="nameControl" type="number" class="form-control" placeholder="Nombres" autofocus>
+          </div>
+          <div class="col-md-3 py-2">
+              <input formControlName="lastnameControl" type="number" class="form-control" placeholder="Apellidos">
+          </div>
+          <div class="col-md-3 py-2">
+              <input formControlName="phoneControl" type="number" class="form-control" placeholder="Teléfono">
+          </div>
+          <div class="col-md-3 py-2">
+              <input formControlName="addresControl" type="number" class="form-control" placeholder="Dirección">
+          </div>
+      </div>
+      <div class="mb-4">
+        Separador de elementos:
+        <div class="form-check">
+          <input class="form-check-input" type="radio" value="," formControlName="charSplit" (click)="palabra(true)" checked>
+          <label class="form-check-label" for="flexRadioDefault1">
+            ","
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio"  value="." formControlName="charSplit" (click)="palabra(true)">
+          <label class="form-check-label" for="flexRadioDefault2">
+            "."
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" value="%" formControlName="charSplit" (click)="palabra(true)">
+          <label class="form-check-label" for="flexRadioDefault2">
+            "%"
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" value=" " formControlName="charSplit" (click)="palabra(true)">
+          <label class="form-check-label" for="flexRadioDefault2">
+            Espacio " "
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="charSplit" (click)="palabra(false)">
+          <label class="form-check-label" for="flexRadioDefault2">
+            Palabra clave
+          </label>
+        </div>
+        <input type="text" class="form-control mb-4" formControlName="word">
+      </div>
+      <div>
+        <input type="file" accept="text/plain" (change)="onFileSelect($event)" />
+      </div>
+      <button [disabled]='formGroup.invalid || !mainFile' (click)="clientAction()" class="btn btn-primary my-4">Guardar</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
