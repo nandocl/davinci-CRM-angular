@@ -3,22 +3,24 @@
   <table class="table text-center">
     <thead class="thead-dark">
       <tr>
-        <th scope="col"># cliente</th>
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
         <th scope="col">Telefono</th>
         <th scope="col">Direccion</th>
         <th scope="col">Id de campania</th>
+        <th scope="col"># cliente</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let client of clientes">
-        <th scope="row">{{client.id}}</th>
         <td>{{client.name}}</td>
         <td>{{client.lastname}}</td>
         <td>{{client.phone}}</td>
         <td>{{client.address}}</td>
         <td>{{client.campCode}}</td>
+        <td>
+          <i (click)="deleteClient(client.id)" class="far fa-trash-alt btn"></i>
+        </td>
       </tr>
     </tbody>
   </table>

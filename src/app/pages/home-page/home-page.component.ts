@@ -19,4 +19,12 @@ export class HomePageComponent implements OnInit {
     this.httpService.getClients().subscribe(clientes => this.clientes = clientes);
   }
 
+  deleteClient(clientId: string){
+    this.httpService.deleteClient(clientId).subscribe(client => {
+      this.clientes.map((cli, i) => {
+        if(cli.id == clientId) this.clientes.splice(i,1);
+      });
+    });
+  }
+
 }
