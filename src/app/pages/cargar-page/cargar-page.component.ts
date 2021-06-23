@@ -46,11 +46,9 @@ export class CargarPageComponent implements OnInit {
   clientAction(){
     let items = this.formGroup.controls
     let cht = this.showDataInput? this.formGroup.controls.charSplit.value : this.formGroup.controls.word.value;
-    let list: number[] = [items.nameControl.value,items.lastnameControl.value,items.phoneControl.value,items.addresControl.value, cht];
-    let file;
+    let positionsArr: number[] = [items.nameControl.value,items.lastnameControl.value,items.phoneControl.value,items.addresControl.value, cht];
     if(this.mainFile != undefined)  {
-      file = this.mainFile;
-      this.httpService.postClients(file, list).subscribe(data => {
+      this.httpService.postClients(this.mainFile, positionsArr).subscribe(data => {
         if(data.msg == 'loaded') this.toast.showMsgGood('Clientes cargados correctamente');
         this.formGroup.reset();
         this.formGroup.controls.charSplit.setValue(',');
