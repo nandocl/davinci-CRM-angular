@@ -1,7 +1,7 @@
 import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { ToastService } from '../services/toast.service';
 
@@ -16,15 +16,13 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return next.handle(req).pipe(
-      catchError(error => {
-        let errorMessage = '';
-        if (error instanceof ErrorEvent) {
-          this.toast.showMsgError('Error en front');
-        } else {
-          // Error de backend
-          this.toast.showMsgError('Error conectando con backend');
-        }        
-        return throwError(errorMessage);
+      catchError(errorInfo => {
+        if(errorInfo.status == 500){
+            this.toast.showMsgError('Error con backend');
+        }else if(errorInfo.status == 404){
+          this.toast.showMsgError(errorInfo.error['msg']);
+        }      
+        return throwError('Error');
       })
     );
   }

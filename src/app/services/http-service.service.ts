@@ -24,7 +24,7 @@ export class HttpServiceService {
     );
   }
   
-  postClients(file: File, pos: number[]): Observable<IClientRes>{
+  postClients(file: File, pos: any[]): Observable<IClientRes>{
     const formData = new FormData();
     formData.append('pos', JSON.stringify(pos));
     formData.append('file', file);
